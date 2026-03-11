@@ -32,8 +32,10 @@ public class DataFilterBeanFactoryPostProcessorIntegrationTest extends BaseFilte
 		Set<String> registeredFilters = sessionFactory.getDefinedFilterNames();
 		assertEquals(19, registeredFilters.size());
 		for (String filterName : testXMlFilters) {
-			registeredFilters.contains(filterName);
+			if (!registeredFilters.contains(filterName)) {
+				throw new AssertionError("Expected filter '" + filterName + "' to be registered");
+			}
 		}
 	}
-	
+
 }
