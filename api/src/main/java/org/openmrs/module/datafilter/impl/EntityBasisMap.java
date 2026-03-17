@@ -3,7 +3,7 @@
  * v. 2.0. If a copy of the MPL was not distributed with this file, You can
  * obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
  * the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
- *
+ * <p>
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
@@ -33,35 +33,35 @@ import org.openmrs.module.datafilter.DataFilterConstants;
  */
 @Entity
 @Table(name = DataFilterConstants.MODULE_ID
-        + "_entity_basis_map", uniqueConstraints = @UniqueConstraint(name = DataFilterConstants.MODULE_ID
-                + "_entity_basis_map_uk", columnNames = { "entity_identifier", "entity_type", "basis_identifier",
-                        "basis_type" }))
+		+ "_entity_basis_map", uniqueConstraints = @UniqueConstraint(name = DataFilterConstants.MODULE_ID
+		+ "_entity_basis_map_uk", columnNames = { "entity_identifier", "entity_type", "basis_identifier",
+		"basis_type" }))
 public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "entity_basis_map_id")
 	private Integer entityBasisMapId;
-	
+
 	@Column(name = "entity_identifier", nullable = false, updatable = false, length = 127)
 	private String entityIdentifier;
-	
+
 	@Column(name = "entity_type", nullable = false, updatable = false)
 	private String entityType;
-	
+
 	@Column(name = "basis_identifier", nullable = false, updatable = false, length = 127)
 	private String basisIdentifier;
-	
+
 	@Column(name = "basis_type", nullable = false, updatable = false)
 	private String basisType;
-	
+
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "creator", nullable = false, updatable = false)
 	private User creator;
-	
+
 	@Column(name = "date_created", nullable = false, updatable = false)
 	private Date dateCreated;
-	
+
 	/**
 	 * @see BaseOpenmrsObject#getId()
 	 */
@@ -69,7 +69,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public Integer getId() {
 		return getEntityBasisMapId();
 	}
-	
+
 	/**
 	 * @see BaseOpenmrsObject#setId(Integer)
 	 */
@@ -77,7 +77,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setId(Integer id) {
 		setEntityBasisMapId(id);
 	}
-	
+
 	/**
 	 * Gets the entityBasisMapId
 	 *
@@ -86,7 +86,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public Integer getEntityBasisMapId() {
 		return entityBasisMapId;
 	}
-	
+
 	/**
 	 * Sets the entityBasisMapId
 	 *
@@ -95,7 +95,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setEntityBasisMapId(Integer entityBasisMapId) {
 		this.entityBasisMapId = entityBasisMapId;
 	}
-	
+
 	/**
 	 * Gets the entityIdentifier
 	 *
@@ -104,7 +104,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public String getEntityIdentifier() {
 		return entityIdentifier;
 	}
-	
+
 	/**
 	 * Sets the entityIdentifier
 	 *
@@ -113,7 +113,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setEntityIdentifier(String entityIdentifier) {
 		this.entityIdentifier = entityIdentifier;
 	}
-	
+
 	/**
 	 * Gets the entityType
 	 *
@@ -122,7 +122,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public String getEntityType() {
 		return entityType;
 	}
-	
+
 	/**
 	 * Sets the entityType
 	 *
@@ -131,7 +131,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setEntityType(String entityType) {
 		this.entityType = entityType;
 	}
-	
+
 	/**
 	 * Gets the basisId
 	 *
@@ -140,7 +140,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public String getBasisIdentifier() {
 		return basisIdentifier;
 	}
-	
+
 	/**
 	 * Sets the basisId
 	 *
@@ -149,7 +149,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setBasisIdentifier(String basisIdentifier) {
 		this.basisIdentifier = basisIdentifier;
 	}
-	
+
 	/**
 	 * Gets the basisType
 	 *
@@ -158,7 +158,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public String getBasisType() {
 		return basisType;
 	}
-	
+
 	/**
 	 * Sets the basisType
 	 *
@@ -167,7 +167,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setBasisType(String basisType) {
 		this.basisType = basisType;
 	}
-	
+
 	/**
 	 * @see Creatable#getCreator()
 	 */
@@ -175,7 +175,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public User getCreator() {
 		return creator;
 	}
-	
+
 	/**
 	 * @see Creatable#setCreator(User)
 	 */
@@ -183,7 +183,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setCreator(User user) {
 		creator = user;
 	}
-	
+
 	/**
 	 * @see Creatable#getDateCreated()
 	 */
@@ -191,7 +191,7 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public Date getDateCreated() {
 		return dateCreated;
 	}
-	
+
 	/**
 	 * @see Creatable#setDateCreated(Date)
 	 */
@@ -199,11 +199,11 @@ public class EntityBasisMap extends BaseOpenmrsObject implements Creatable {
 	public void setDateCreated(Date date) {
 		dateCreated = date;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "EntityBasisMap{" + "entityBasisMapId=" + entityBasisMapId + ", entityType='" + entityType + '\''
-		        + ", entityIdentifier='" + entityIdentifier + '\'' + ", basisType='" + basisType + '\''
-		        + ", basisIdentifier='" + basisIdentifier + '\'' + '}';
+				+ ", entityIdentifier='" + entityIdentifier + '\'' + ", basisType='" + basisType + '\''
+				+ ", basisIdentifier='" + basisIdentifier + '\'' + '}';
 	}
 }

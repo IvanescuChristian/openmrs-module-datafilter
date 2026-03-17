@@ -10,6 +10,7 @@
 package org.openmrs.module.datafilter;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
@@ -19,7 +20,10 @@ import org.openmrs.module.datafilter.impl.BaseFilterTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class DataFilterBeanFactoryPostProcessorIntegrationTest extends BaseFilterTest {
-	
+
+	private static final int FILTER_REGISTRATION_COUNT = 20;
+	private static final int FILTELTER_REGISTARED_COUNT = 19;
+	@Autowired
 	private static final String[] testXMlFilters = new String[] { "datafilter_locationFilter1", "datafilter_locationFilter2",
 	        "datafilter_CareSettingFilter" };
 	
@@ -28,13 +32,12 @@ public class DataFilterBeanFactoryPostProcessorIntegrationTest extends BaseFilte
 	
 	@Test
 	public void postProcessBeanFactory_shouldRegisterFiltersToHbmFiles() {
-		assertEquals(20, Util.getHibernateFilterRegistrations().size());
+		assertEquals(FILTER_REGISTRATION_COUNT, Util.getHibernateFilterRegistrations().size());
 		Set<String> registeredFilters = sessionFactory.getDefinedFilterNames();
-		assertEquals(19, registeredFilters.size());
+		assertEquals(FILTELTER_REGISTARED_COUNT, registeredFilters.size());
 		for (String filterName : testXMlFilters) {
-			if (!registeredFilters.contains(filterName)) {
-				throw new AssertionError("Expected filter '" + filterName + "' to be registered");
-			}
+			assertTrue("Expected filter '" + filterName + "' to be registered in SessionFactory",
+					registeredFilters.contains(filterName));
 		}
 	}
 
